@@ -1,0 +1,41 @@
+{
+  "name": "kmd-script",
+  "version": "0.0.5",
+  "description": "A weird little scripting language",
+  "homepage": "https://github.com/Netflix-Skunkworks/kmd",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Netflix-Skunkworks/kmd.git"
+  },
+  "main": "src/index.js",
+  "bin": {
+    "kmd": "bin/index.js"
+  },
+  "scripts": {
+    "build": "shx rm -r dist/* ; ncc build src/cli.js -o dist ; terser --verbose dist/index.js -o dist/index.min.js ; shx rm dist/index.js",
+    "test": "faucet test/*",
+    "benchmark": "node benchmark.js"
+  },
+  "author": "Jesse Kriss <jkriss@netflix.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "dot-prop": "^4.2.0",
+    "execa": "^1.0.0",
+    "extend": "^3.0.2",
+    "fecha": "^3.0.2",
+    "fs-extra": "^7.0.1",
+    "shell-quote": "^1.6.1",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "faucet": "0.0.1",
+    "microtime": "^2.1.8",
+    "ncc": "^0.3.6",
+    "shx": "^0.3.2",
+    "tap": "^12.1.1",
+    "terser": "^3.14.1",
+    "tiny-human-time": "^1.2.0"
+  }
+}
