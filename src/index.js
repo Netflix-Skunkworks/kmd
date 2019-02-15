@@ -1,8 +1,9 @@
 const debug = require('./debug')('run')
 const fs = require('fs-extra')
 const vm = require('vm')
-const commands = require('./commands/index')
 const indentationParser = require('./indentation')
+let commands = {}
+let environmentSet = false
 
 const makeLine = (line, lineNum) => {
   const [cmd, ...args] = line.trim().split(/\s+/)
@@ -27,7 +28,24 @@ const makeBlock = (lines, { map }={}) => {
   }
 }
 
+/**
+ * Sets environment variables for scripts
+ * @param {Object} [env={}] key value pairs to set into `process.env`
+ */
+const setKmdEnv = (env = {}) => {
+  if (Object(env) !== env) throw new Error('env param must be an object')
+
+  for (let v in env) {
+    process.env[v] = env[v]
+  }
+
+  environmentSet = true
+  commands = require('./commands/index')
+}
+
 const compile = (scriptSrc) => {
+  // if setKmdEnv wasn't called, load up the commands, should only be called once
+  if (!environmentSet) setKmdEnv({})
   // console.time('compile')
   const lines = indentationParser(scriptSrc.trim().split('\n').filter(line => line.trim().length > 0))
   pipeline = makeBlock(lines)
@@ -47,6 +65,7 @@ const runScript = (scriptSrc) => run(compile(scriptSrc))
 module.exports = {
   compile,
   run,
+  setKmdEnv,
   runScript,
   commands
 }
