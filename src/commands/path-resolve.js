@@ -1,7 +1,4 @@
 const path = require('path')
-const IS_DEV = process.env.NODE_ENV === 'development'
-const appPath = process.resourcesPath
+const basePath = process.env.FILE_BASE_PATH || ''
 
-module.exports = userPath => () => {
-  return path.resolve((IS_DEV ? '' : appPath + path.sep) + userPath)
-}
+module.exports = userPath => () => path.resolve(basePath + userPath)
