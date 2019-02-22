@@ -2,3 +2,7 @@
 node_modules
 tmp
 dist
+
+# Metatron decrypted secrets
+root
+**/metatron/decrypted
