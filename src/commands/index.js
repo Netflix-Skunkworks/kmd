@@ -2,6 +2,7 @@ const pipe = require('./pipe')
 const echo = require('./echo')
 const exec = require('./exec')
 const save = require('./save')
+const contains = require('./contains')
 const extract = require('./extract')
 const load = require('./load')
 const remove = require('./remove')
@@ -35,6 +36,7 @@ module.exports = {
   as,
   template,
   cat,
+  contains,
   parseDate,
   parseInt,
   pathResolve,
