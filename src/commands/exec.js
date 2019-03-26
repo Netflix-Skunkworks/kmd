@@ -3,6 +3,11 @@ const execa = require('execa')
 const parse = require('shell-quote').parse
 const shell = require('shelljs')
 
+// allow node binary path to be injected
+if (process.env.NODE_PATH) {
+  shell.config.execPath = process.env.NODE_PATH
+}
+
 const exec = (defaultShellStr) => async function(shellStr) {
   const execStr = shellStr || defaultShellStr
   debug("executing", execStr)
