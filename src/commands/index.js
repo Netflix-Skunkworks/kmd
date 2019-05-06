@@ -20,6 +20,7 @@ const trim = require('./trim')
 const debug = require('./debug')
 const print = require('./print')
 const defaultTo = require('./default-to')
+const tryExec = require('./try-exec')
 
 module.exports = {
   pipe,
@@ -43,5 +44,6 @@ module.exports = {
   noEmpty,
   trim,
   debug,
-  print
+  print,
+  tryExec
 }
