@@ -48,7 +48,7 @@ const compile = (scriptSrc) => {
   if (!environmentSet) setKmdEnv({})
   // console.time('compile')
   const lines = indentationParser(scriptSrc.trim().split('\n').filter(line => line.trim().length > 0))
-  pipeline = makeBlock(lines)
+  const pipeline = makeBlock(lines)
   // console.timeEnd('compile')
   return pipeline
 }
