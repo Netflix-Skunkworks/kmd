@@ -1,49 +1,51 @@
-const pipe = require('./pipe')
+const as = require('./as')
+const boolMatch = require('./bool-match')
+const cat = require('./cat')
+const contains = require('./contains')
+const debug = require('./debug')
+const defaultTo = require('./default-to')
 const echo = require('./echo')
 const exec = require('./exec')
-const save = require('./save')
-const contains = require('./contains')
 const extract = require('./extract')
-const load = require('./load')
-const remove = require('./remove')
-const split = require('./split')
 const lines = require('./lines')
+const load = require('./load')
 const map = require('./map')
-const as = require('./as')
-const template = require('./template')
-const cat = require('./cat')
+const noEmpty = require('./no-empty')
 const parseDate = require('./parse-date')
 const parseInt = require('./parse-int')
-const noEmpty = require('./no-empty')
 const pathResolve = require('./path-resolve')
-const trim = require('./trim')
-const debug = require('./debug')
+const pipe = require('./pipe')
 const print = require('./print')
-const defaultTo = require('./default-to')
+const remove = require('./remove')
+const save = require('./save')
+const split = require('./split')
+const template = require('./template')
+const trim = require('./trim')
 const tryExec = require('./try-exec')
 
 module.exports = {
-  pipe,
-  echo,
-  exec,
-  save,
-  defaultTo,
-  extract,
-  load,
-  remove,
-  split,
-  lines,
-  map,
   as,
-  template,
+  boolMatch,
   cat,
   contains,
+  debug,
+  defaultTo,
+  echo,
+  exec,
+  extract,
+  lines,
+  load,
+  map,
+  noEmpty,
   parseDate,
   parseInt,
   pathResolve,
-  noEmpty,
-  trim,
-  debug,
+  pipe,
   print,
+  remove,
+  save,
+  split,
+  template,
+  trim,
   tryExec
 }
