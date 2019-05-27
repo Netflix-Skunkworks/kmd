@@ -1,6 +1,6 @@
 {
   "name": "kmd-script",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A weird little scripting language",
   "homepage": "https://github.com/Netflix-Skunkworks/kmd",
   "repository": {
