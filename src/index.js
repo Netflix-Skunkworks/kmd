@@ -54,7 +54,7 @@ const compile = (scriptSrc, variables = {}) => {
   .trim()
   .replace(REPLACEMENT_REGEX, match => {
     const key = match.substring(1, match.length-1);
-    return variables[key] || match
+    return variables.hasOwnProperty(key) ? variables[key] : match
   })
   .split('\n')
   .filter(line => line.trim().length > 0);
