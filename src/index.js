@@ -52,7 +52,10 @@ const compile = (scriptSrc, variables = {}) => {
 
   const source = scriptSrc
   .trim()
-  .replace(REPLACEMENT_REGEX, match => variables[match] || match)
+  .replace(REPLACEMENT_REGEX, match => {
+    const key = match.substring(1, match.length-1);
+    return variables[key] || match
+  })
   .split('\n')
   .filter(line => line.trim().length > 0);
 
