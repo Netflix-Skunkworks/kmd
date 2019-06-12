@@ -5,6 +5,8 @@ const indentationParser = require('./indentation')
 let commands = {}
 let environmentSet = false
 
+const REPLACEMENT_REGEX= /%[\w\d-_]+%/g;
+
 const makeLine = (line, lineNum) => {
   const [cmd, ...args] = line.trim().split(/\s+/)
   let singleArg = args.join(' ')
@@ -43,11 +45,21 @@ const setKmdEnv = (env = {}) => {
   commands = require('./commands/index')
 }
 
-const compile = (scriptSrc) => {
+const compile = (scriptSrc, variables = {}) => {
   // if setKmdEnv wasn't called, load up the commands, should only be called once
   if (!environmentSet) setKmdEnv({})
   // console.time('compile')
-  const lines = indentationParser(scriptSrc.trim().split('\n').filter(line => line.trim().length > 0))
+
+  const source = scriptSrc
+  .trim()
+  .replace(REPLACEMENT_REGEX, match => {
+    const key = match.substring(1, match.length-1);
+    return variables.hasOwnProperty(key) ? variables[key] : match
+  })
+  .split('\n')
+  .filter(line => line.trim().length > 0);
+
+  const lines = indentationParser(source)
   const pipeline = makeBlock(lines)
   // console.timeEnd('compile')
   return pipeline
@@ -60,7 +72,7 @@ const run = async (fn, input) => {
   return result
 }
 
-const runScript = (scriptSrc) => run(compile(scriptSrc))
+const runScript = (scriptSrc, variables = {}) => run(compile(scriptSrc, variables))
 
 module.exports = {
   compile,
