@@ -7,7 +7,7 @@ split \n\n
 
   load info
   extract =\s?([\d]{4}\/[\d]{2}\/[\d]{2}\s[\d]{2}:[\d]{2}:[\d]{2})
-  parseDate YYYY/MM/DD hh:mm:ss
+  parseDate YYYY/MM/DD HH:mm:ss
   save lastOpened
   # print lastOpened
   # print name

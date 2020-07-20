@@ -2,6 +2,7 @@
 node_modules
 tmp
 dist
+.vscode
 
 # Metatron decrypted secrets
 root

@@ -13,7 +13,7 @@ lines
   template lsappinfo info -app {name}
   exec
   extract =\s?([\d]{4}\/[\d]{2}\/[\d]{2}\s[\d]{2}:[\d]{2}:[\d]{2})
-  parseDate YYYY/MM/DD hh:mm:ss
+  parseDate YYYY/MM/DD HH:mm:ss
   save lastOpened
 
   load file
