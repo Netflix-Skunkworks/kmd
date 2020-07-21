@@ -7,7 +7,7 @@ async function process(scripts) {
     const result = await runScript(s);
     results = Object.assign(results, result);
   }
-  console.log(JSON.stringify(results, null, 2));
+  console.log(JSON.stringify(results));
 }
 
 const scripts = scriptArgs.slice(1)
