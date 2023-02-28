@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
-    "faucet": "0.0.1",
+    "faucet": "0.0.4",
     "microtime": "^2.1.8",
     "ncc": "^0.3.6",
     "shx": "^0.3.2",
